@@ -163,8 +163,9 @@ class Manager
                 $directory = Str::finish($directory, DIRECTORY_SEPARATOR);
             }
 
-            if (is_file($directory . $file)) {
-                return file_get_contents($directory . $file);
+            $contents = @file_get_contents($directory . $file);
+            if ($contents) {
+                return $contents;
             }
         }
 
